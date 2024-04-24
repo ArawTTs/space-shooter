@@ -26,4 +26,18 @@ public class projectileController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Enemy")
+        {
+            PlayerStats.playerStats.UpdateScore();
+        }
+
+        if (other.tag == "Enemy" || other.tag == "enemyProjectile")
+        { 
+            Vector2 expos = transform.position;
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
+    }
 }

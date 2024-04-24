@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject Projectile;
     public GameObject projectilePosition;
+    public GameObject Explosion;
 
     float fireInterval = .5f;
     float nextFire;
@@ -66,5 +67,20 @@ public class PlayerController : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, min.x, max.x);
         pos.y = Mathf.Clamp(pos.y, min.y, max.y);
         transform.position = pos;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy" || other.tag == "enemyProjectile")
+        {
+            PlayerStats.playerStats.playerLife--;
+            Debug.Log("Hit");
+
+            Vector2 expos = transform.position;
+
+            GameObject explosion = (GameObject)Instantiate(Explosion);
+                explosion.transform.position = expos;
+            
+        }
     }
 }

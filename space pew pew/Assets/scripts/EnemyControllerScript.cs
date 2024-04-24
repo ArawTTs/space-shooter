@@ -33,10 +33,12 @@ public class EnemyControllerScript : MonoBehaviour
         { 
             Destroy(gameObject);
         }
-        void FireProjectile()
-        {
-            GameObject Enemyprojectile = (GameObject)Instantiate(enemyProjectile);
-            enemyProjectile.transform.position = enemyProjectilePosition.transform.position;
-        }
+        
+    }
+
+    void FireProjectile()
+    {
+        GameObject Enemyprojectile = (GameObject)Instantiate(enemyProjectile);
+        Enemyprojectile.transform.position = enemyProjectilePosition.transform.position;
     }
 }
